@@ -99,8 +99,6 @@
       墨屿 &middot; 在诗词中安放心事 &middot; 按 <kbd>R</kbd> 随机 &middot; <kbd>F</kbd> 收藏 &middot; <kbd>D</kbd> 每日推荐
     </div>
   </footer>
-
-  
 <script>
 // 诗词数据 —— 按情绪分类
 const poems = {
@@ -327,7 +325,7 @@ let currentView = "explore"; // explore | favorites | journal
 
 // === DOM refs ===
 const $ = (s) => document.querySelector(s);
-const $ = (s) => document.querySelectorAll(s);
+const $$ = (s) => document.querySelectorAll(s);
 
 const heroQuote = $("#hero-quote");
 const heroSource = $("#hero-source");
@@ -651,10 +649,8 @@ function init() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", init);
+try { init(); } catch(e) { document.body.innerHTML += '<div style="color:red;padding:20px;font-family:sans-serif">JS Error: ' + e.message + '</div>'; };
 
 </script>
 </body>
-
-
-
+</html>
