@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>澧ㄥ笨 路 鏂囧鐤楁剤绌洪棿</title>
-  <meta name="description" content="鍦ㄨ瘲璇嶅拰鏂囧涓紝瀹夋斁浣犵殑杩疯尗銆佺劍铏戜笌鐤叉儷銆?>
+  <title>墨屿 · 文学疗愈空间</title>
+  <meta name="description" content="在诗词和文学中，安放你的迷茫、焦虑与疲惫。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,11 +15,11 @@
   <!-- Header -->
   <header class="header">
     <div class="header-inner">
-      <div class="logo">澧?span>灞?/span></div>
+      <div class="logo">墨<span>屿</span></div>
       <div class="nav-actions">
-        <button class="nav-btn active" id="nav-explore">鎺㈢储</button>
-        <button class="nav-btn" id="nav-fav">鏀惰棌</button>
-        <button class="nav-btn" id="nav-journal">渚跨</button>
+        <button class="nav-btn active" id="nav-explore">探索</button>
+        <button class="nav-btn" id="nav-fav">收藏</button>
+        <button class="nav-btn" id="nav-journal">便签</button>
       </div>
     </div>
   </header>
@@ -34,7 +34,8 @@
         <div class="hero-mood-tags" id="mood-tags"></div>
         <div style="margin-top: 24px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
           <button class="nav-btn" id="random-btn" style="font-size: 14px; padding: 8px 22px;">
-            &#x1F500; 闅忔満涓€棣?          </button>
+            &#x1F500; 随机一首
+          </button>
         </div>
       </div>
     </section>
@@ -50,15 +51,15 @@
               <div class="poem-author" id="poem-author"></div>
             </div>
             <div class="poem-actions">
-              <button class="icon-btn" id="fav-btn" title="鏀惰棌 / 鍙栨秷鏀惰棌">
+              <button class="icon-btn" id="fav-btn" title="收藏 / 取消收藏">
                 <span class="icon-text">&#x2661;</span>
-                <span class="tooltip">鏀惰棌</span>
+                <span class="tooltip">收藏</span>
               </button>
             </div>
           </div>
           <div class="poem-text" id="poem-text"></div>
           <div class="poem-translation" id="poem-translation">
-            <div class="poem-translation-label">&#x2014; 璇绘噦瀹?&#x2014;</div>
+            <div class="poem-translation-label">&#x2014; 读懂它 &#x2014;</div>
             <div class="poem-translation-body"></div>
           </div>
           <div class="poem-reflection" id="poem-reflection"></div>
@@ -74,7 +75,7 @@
   <div class="page-section" id="favorites-section">
     <section class="favorites-section show" style="padding-top: 100px;">
       <div class="container">
-        <div class="favorites-title">&#x2665; 鎴戠殑鏀惰棌</div>
+        <div class="favorites-title">&#x2665; 我的收藏</div>
         <div id="favorites-list"></div>
       </div>
     </section>
@@ -84,9 +85,9 @@
   <div class="page-section" id="journal-section">
     <section class="journal-section show" style="padding-top: 100px;">
       <div class="container">
-        <div class="journal-title">&#x270D; 涔﹀啓鎰熸偀</div>
-        <textarea class="journal-textarea" id="journal-text" placeholder="璇昏繖棣栬瘲鐨勬椂鍊欙紝浣犳兂鍒颁簡浠€涔堬紵鍐欎笅浣犵殑蹇冩儏鍚р€︹€?></textarea>
-        <button class="journal-save-btn" id="journal-save-btn">淇濆瓨</button>
+        <div class="journal-title">&#x270D; 书写感悟</div>
+        <textarea class="journal-textarea" id="journal-text" placeholder="读这首诗的时候，你想到了什么？写下你的心情吧……"></textarea>
+        <button class="journal-save-btn" id="journal-save-btn">保存</button>
         <div class="journal-entries" id="journal-entries"></div>
       </div>
     </section>
@@ -95,7 +96,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      澧ㄥ笨 &middot; 鍦ㄨ瘲璇嶄腑瀹夋斁蹇冧簨 &middot; 鎸?<kbd>R</kbd> 闅忔満 &middot; <kbd>F</kbd> 鏀惰棌 &middot; <kbd>D</kbd> 姣忔棩鎺ㄨ崘
+      墨屿 &middot; 在诗词中安放心事 &middot; 按 <kbd>R</kbd> 随机 &middot; <kbd>F</kbd> 收藏 &middot; <kbd>D</kbd> 每日推荐
     </div>
   </footer>
 
