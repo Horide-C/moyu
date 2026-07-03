@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>澧ㄥ笨 路 鏂囧鐤楁剤绌洪棿</title>
+  <meta name="description" content="鍦ㄨ瘲璇嶅拰鏂囧涓紝瀹夋斁浣犵殑杩疯尗銆佺劍铏戜笌鐤叉儷銆?>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">澧?span>灞?/span></div>
+      <div class="nav-actions">
+        <button class="nav-btn active" id="nav-explore">鎺㈢储</button>
+        <button class="nav-btn" id="nav-fav">鏀惰棌</button>
+        <button class="nav-btn" id="nav-journal">渚跨</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Explore Section -->
+  <div class="page-section active" id="explore-section">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-quote" id="hero-quote"></div>
+        <div class="hero-source" id="hero-source"></div>
+        <div class="hero-mood-tags" id="mood-tags"></div>
+        <div style="margin-top: 24px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+          <button class="nav-btn" id="random-btn" style="font-size: 14px; padding: 8px 22px;">
+            &#x1F500; 闅忔満涓€棣?          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Poem Card -->
+    <section class="poem-section">
+      <div class="container">
+        <div class="poem-card fade-in" id="poem-card">
+          <div class="daily-badge" id="poem-daily-badge" style="display:none;"></div>
+          <div class="poem-card-header">
+            <div class="poem-title-group">
+              <div class="poem-title" id="poem-title"></div>
+              <div class="poem-author" id="poem-author"></div>
+            </div>
+            <div class="poem-actions">
+              <button class="icon-btn" id="fav-btn" title="鏀惰棌 / 鍙栨秷鏀惰棌">
+                <span class="icon-text">&#x2661;</span>
+                <span class="tooltip">鏀惰棌</span>
+              </button>
+            </div>
+          </div>
+          <div class="poem-text" id="poem-text"></div>
+          <div class="poem-translation" id="poem-translation">
+            <div class="poem-translation-label">&#x2014; 璇绘噦瀹?&#x2014;</div>
+            <div class="poem-translation-body"></div>
+          </div>
+          <div class="poem-reflection" id="poem-reflection"></div>
+        </div>
+
+        <!-- Mood Navigator -->
+        <div class="mood-nav" id="mood-nav"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Favorites Section -->
+  <div class="page-section" id="favorites-section">
+    <section class="favorites-section show" style="padding-top: 100px;">
+      <div class="container">
+        <div class="favorites-title">&#x2665; 鎴戠殑鏀惰棌</div>
+        <div id="favorites-list"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Journal Section -->
+  <div class="page-section" id="journal-section">
+    <section class="journal-section show" style="padding-top: 100px;">
+      <div class="container">
+        <div class="journal-title">&#x270D; 涔﹀啓鎰熸偀</div>
+        <textarea class="journal-textarea" id="journal-text" placeholder="璇昏繖棣栬瘲鐨勬椂鍊欙紝浣犳兂鍒颁簡浠€涔堬紵鍐欎笅浣犵殑蹇冩儏鍚р€︹€?></textarea>
+        <button class="journal-save-btn" id="journal-save-btn">淇濆瓨</button>
+        <div class="journal-entries" id="journal-entries"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      澧ㄥ笨 &middot; 鍦ㄨ瘲璇嶄腑瀹夋斁蹇冧簨 &middot; 鎸?<kbd>R</kbd> 闅忔満 &middot; <kbd>F</kbd> 鏀惰棌 &middot; <kbd>D</kbd> 姣忔棩鎺ㄨ崘
+    </div>
+  </footer>
+
+  <script src="js/poems.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
