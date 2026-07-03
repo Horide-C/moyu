@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -100,7 +100,561 @@
     </div>
   </footer>
 
-  <script src="js/poems.js"></script>
-  <script src="js/app.js"></script>
+  
+<script>
+// 诗词数据 —— 按情绪分类
+const poems = {
+  // ======== 迷茫时 ========
+  confused: [
+    {
+      id: "c1",
+      title: "行路难·其一",
+      author: "李白",
+      dynasty: "唐",
+      text: "金樽清酒斗十千，玉盘珍羞直万钱。\n停杯投箸不能食，拔剑四顾心茫然。\n欲渡黄河冰塞川，将登太行雪满山。\n闲来垂钓碧溪上，忽复乘舟梦日边。\n行路难，行路难，多歧路，今安在？\n长风破浪会有时，直挂云帆济沧海。",
+      translation: "酒杯里装着美酒，盘子里放着珍馐，可我放下杯筷无心进食，拔出宝剑环顾四周，心里一片茫然。想渡黄河，冰雪堵塞了河道；想登太行，大雪封山。但总有一天，我会乘风破浪，高挂云帆，横渡沧海。",
+      reflection: "迷茫时读到"拔剑四顾心茫然"，就像看到了自己。但李白告诉我们：路再难，也终有长风破浪的那一天。你不是迷失了方向，你只是在积蓄破浪的力量。"
+    },
+    {
+      id: "c2",
+      title: "定风波",
+      author: "苏轼",
+      dynasty: "宋",
+      text: "莫听穿林打叶声，何妨吟啸且徐行。\n竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。\n料峭春风吹酒醒，微冷，山头斜照却相迎。\n回首向来萧瑟处，归去，也无风雨也无晴。",
+      translation: "别去听那雨打树叶的声音，不妨一边吟唱一边慢慢走。竹杖草鞋比骑马还轻快，有什么好怕的？一身蓑衣，任它烟雨平生。春风吹醒了酒意，有点冷，但山头的夕阳正迎接着我。回头看看来路，风雨也好，晴天也罢，都已不足挂怀。",
+      reflection: "苏轼被贬途中遇雨，别人狼狈，他却吟啸徐行。"一蓑烟雨任平生"——人生中的那些风雨，回头再看，其实也不过如此。你现在觉得迷茫的时刻，终会成为你"也无风雨也无晴"的坦然。"
+    },
+    {
+      id: "c3",
+      title: "游山西村",
+      author: "陆游",
+      dynasty: "宋",
+      text: "莫笑农家腊酒浑，丰年留客足鸡豚。\n山重水复疑无路，柳暗花明又一村。\n箫鼓追随春社近，衣冠简朴古风存。\n从今若许闲乘月，拄杖无时夜叩门。",
+      translation: "不要笑话农家腊月酿的酒浑浊，丰收年景他们待客很丰盛。山一重水一绕，正怀疑无路可走，忽然柳暗花明，眼前又出现一个村庄。",
+      reflection: ""山重水复疑无路，柳暗花明又一村。"这句诗跨越千年，仍然在告诉每一个迷茫的人：你以为走到了尽头，其实转个弯就是新的天地。坚持走下去，光会在你不经意间出现。"
+    },
+    {
+      id: "c4",
+      title: "望岳",
+      author: "杜甫",
+      dynasty: "唐",
+      text: "岱宗夫如何？齐鲁青未了。\n造化钟神秀，阴阳割昏晓。\n荡胸生曾云，决眦入归鸟。\n会当凌绝顶，一览众山小。",
+      translation: "泰山是什么样的？从齐到鲁都望不尽它的青色。大自然聚集了所有神奇秀美，山南山北分隔出黄昏和拂晓。层云激荡着胸襟，归鸟飞入眼帘。总有一天我要登上顶峰，俯瞰群山都变得渺小。",
+      reflection: "年轻时的杜甫望见泰山，立下"会当凌绝顶"的志向。迷茫的时候，不妨把目光放长远——你正在攀爬的这座山，等你到了山顶再看，曾经的困顿不过是路上的一粒尘埃。"
+    }
+  ],
+  // ======== 焦虑时 ========
+  anxious: [
+    {
+      id: "a1",
+      title: "饮酒·其五",
+      author: "陶渊明",
+      dynasty: "东晋",
+      text: "结庐在人境，而无车马喧。\n问君何能尔？心远地自偏。\n采菊东篱下，悠然见南山。\n山气日夕佳，飞鸟相与还。\n此中有真意，欲辨已忘言。",
+      translation: "住在人世间，却没有车马的喧嚣。问我为什么能做到？心远离了世俗，自然就觉得住处偏僻了。在东篱下采菊，悠然间抬头看见了南山。山间傍晚的景色真好，飞鸟结伴归巢。这里有人生的真意，想表达却已忘了言辞。",
+      reflection: "焦虑往往来自"车马喧"——外界的噪音和比较。陶渊明说"心远地自偏"：你无法改变环境，但你可以改变内心的距离。试着在今天找一个安静的角落，像采菊东篱下那样，只做一件简单的事。"
+    },
+    {
+      id: "a2",
+      title: "春江花月夜（节选）",
+      author: "张若虚",
+      dynasty: "唐",
+      text: "江畔何人初见月？江月何年初照人？\n人生代代无穷已，江月年年望相似。\n不知江月待何人，但见长江送流水。",
+      translation: "是谁在江边第一次看到月亮？江上的月亮又是哪一年第一次照见人？人生一代又一代没有穷尽，但江月年年看起来都一样。不知江月在等待着谁，只看见长江送走了一江流水。",
+      reflection: "当你着急的时候，想想这首诗——人生代代无穷已，江月年年望相似。你正在焦虑的那些事，放在时间的长河里，不过是江面上的一朵浪花。放宽心，你还有很长很长的时间。"
+    },
+    {
+      id: "a3",
+      title: "浣溪沙",
+      author: "晏殊",
+      dynasty: "宋",
+      text: "一曲新词酒一杯，去年天气旧亭台。\n夕阳西下几时回？\n无可奈何花落去，似曾相识燕归来。\n小园香径独徘徊。",
+      translation: "填一首新词，饮一杯酒，还是去年的天气，去年的旧亭台。夕阳西下，什么时候会再回来呢？花儿凋落让人无可奈何，但归来的燕子还是那样似曾相识。在小园的花径上独自徘徊。",
+      reflection: ""无可奈何花落去，似曾相识燕归来"——失去的终将失去，但新的美好会以另一种形式归来。焦虑的时候，告诉自己：花落是自然，燕归也是自然。你只需要像晏殊一样，在小园香径上走一走、等一等。"
+    },
+    {
+      id: "a4",
+      title: "酬乐天咏老见示（节选）",
+      author: "刘禹锡",
+      dynasty: "唐",
+      text: "莫道桑榆晚，为霞尚满天。\n经事还谙事，阅人如阅川。\n细思皆幸矣，下此便翛然。",
+      translation: "不要说日落时分已经太晚了，晚霞依然可以映满天空。经历了事情就更懂事情，看过的人就像看过了山川河流。仔细想想这些都是幸运的事，明白了这些，心情自然就轻松自在了。",
+      reflection: ""莫道桑榆晚，为霞尚满天"——任何时候开始都不晚。焦虑往往是觉得"来不及了"，但刘禹锡告诉你：晚霞恰恰是一天中最美的时刻。你的人生也还远没到夕阳，你的霞光才刚开始铺展。"
+    }
+  ],
+  // ======== 孤独时 ========
+  lonely: [
+    {
+      id: "l1",
+      title: "月下独酌·其一",
+      author: "李白",
+      dynasty: "唐",
+      text: "花间一壶酒，独酌无相亲。\n举杯邀明月，对影成三人。\n月既不解饮，影徒随我身。\n暂伴月将影，行乐须及春。\n我歌月徘徊，我舞影零乱。\n醒时同交欢，醉后各分散。\n永结无情游，相期邈云汉。",
+      translation: "花丛中摆上一壶酒，独自饮酒没有亲近的人。举起酒杯邀请明月，加上影子就成了三人。月亮不懂喝酒，影子也只是跟着我。那就暂且以月和影为伴，趁这大好春光及时行乐吧。我唱歌月亮徘徊，我起舞影子零乱。清醒时一起欢愉，醉后各自散去。",
+      reflection: "李白一个人喝酒，却能邀明月和影子作伴，把孤独变成了一场盛大的狂欢。孤独不是缺陷，它是你与自己深度相处的能力。像李白一样，学会和自己的影子做朋友。"
+    },
+    {
+      id: "l2",
+      title: "江雪",
+      author: "柳宗元",
+      dynasty: "唐",
+      text: "千山鸟飞绝，万径人踪灭。\n孤舟蓑笠翁，独钓寒江雪。",
+      translation: "所有的山上都看不到鸟的影子，所有的路上都没有人的脚印。只有江面上一只孤舟，一个披着蓑衣戴着斗笠的老翁，独自在漫天风雪中垂钓。",
+      reflection: "整首诗只有二十个字，却画出了天地间最极致的孤独。但柳宗元笔下的老翁并没有被孤独压垮——他在寒江雪中安静地垂钓，自在而坚定。孤独可以是一种力量，让你在喧嚣之外，守住自己的那份宁静。"
+    },
+    {
+      id: "l3",
+      title: "登幽州台歌",
+      author: "陈子昂",
+      dynasty: "唐",
+      text: "前不见古人，后不见来者。\n念天地之悠悠，独怆然而涕下。",
+      translation: "前面看不见古代的先贤，后面看不到未来的来者。想到天地的无穷无尽，独自悲伤地流下了眼泪。",
+      reflection: "有时候孤独是一种"前不见古人，后不见来者"的苍茫感——觉得自己不被理解、前路无人。但陈子昂的眼泪里有一种力量：意识到自己是宇宙中的独立个体，反而会更清楚自己想要什么。孤独是清醒的开始。"
+    },
+    {
+      id: "l4",
+      title: "水调歌头（节选）",
+      author: "苏轼",
+      dynasty: "宋",
+      text: "明月几时有？把酒问青天。\n不知天上宫阙，今夕是何年。\n我欲乘风归去，又恐琼楼玉宇，高处不胜寒。\n起舞弄清影，何似在人间。\n转朱阁，低绮户，照无眠。\n不应有恨，何事长向别时圆？\n人有悲欢离合，月有阴晴圆缺，此事古难全。\n但愿人长久，千里共婵娟。",
+      translation: "明月什么时候出现的？我端起酒杯问青天。不知道天上的宫殿里，今晚是哪一年。我想乘风回去，又怕那琼楼玉宇太高了，受不住寒冷。起舞弄影，还是人间好。月亮转过朱阁，低低地挂在窗前，照着失眠的人。人不该有怨恨，可为什么偏偏在离别的时候月圆呢？人有悲欢离合，月有阴晴圆缺，自古就难以两全。只愿我们都平安健康，即使相隔千里，也能共享这美好的月光。",
+      reflection: "孤独的夜晚读苏轼吧。"人有悲欢离合，月有阴晴圆缺，此事古难全"——苏轼把孤独和离别看作了自然的规律，因而释然。你不是一个人，在这轮明月下，有无数人和你一样在思念、在坚持、在默默祝福。"
+    }
+  ],
+  // ======== 需要勇气时 ========
+  courage: [
+    {
+      id: "r1",
+      title: "将进酒（节选）",
+      author: "李白",
+      dynasty: "唐",
+      text: "君不见黄河之水天上来，奔流到海不复回。\n君不见高堂明镜悲白发，朝如青丝暮成雪。\n人生得意须尽欢，莫使金樽空对月。\n天生我材必有用，千金散尽还复来。\n烹羊宰牛且为乐，会须一饮三百杯。",
+      translation: "你没看到吗？黄河之水从天而降，奔流到海不再回来。你没看到吗？高堂明镜中悲叹白发，早上还是青丝晚上就变成了雪。人生得意时就该尽情欢乐，别让金杯空着对着月亮。上天造就了我这人才一定有用，千金散尽了也还能再回来。",
+      reflection: ""天生我材必有用"——这是李白给所有怀疑自己的人最响亮的回答。你不需要和别人比，你来到这个世界上本身就带着独特的价值。不管现在的处境如何，你的"千金"迟早会回来的。"
+    },
+    {
+      id: "r2",
+      title: "竹石",
+      author: "郑燮",
+      dynasty: "清",
+      text: "咬定青山不放松，立根原在破岩中。\n千磨万击还坚劲，任尔东西南北风。",
+      translation: "竹子紧紧咬住青山绝不放松，它的根深深扎在破裂的岩石中。经历了千万次的折磨和打击依然坚韧挺拔，任凭你东西南北风都吹不倒它。",
+      reflection: "郑板桥笔下的竹子，长在最贫瘠的岩石缝里，却"千磨万击还坚劲"。如果你现在感到被生活"千磨万击"，请记住：你比你以为的要坚韧得多。咬定青山，风总会过去的。"
+    },
+    {
+      id: "r3",
+      title: "龟虽寿（节选）",
+      author: "曹操",
+      dynasty: "东汉",
+      text: "神龟虽寿，犹有竟时。\n腾蛇乘雾，终为土灰。\n老骥伏枥，志在千里。\n烈士暮年，壮心不已。\n盈缩之期，不但在天。\n养怡之福，可得永年。",
+      translation: "神龟虽然长寿，也有终结的时候。腾蛇能腾云驾雾，最终也化为尘土。老马虽然趴在马厩里，但志向仍在千里之外。有抱负的人即使到了晚年，雄心也不会消沉。寿命长短不只由天决定，保养好身心，也可以活得更长久。",
+      reflection: ""老骥伏枥，志在千里"——如果一匹老马都还在追逐千里的梦想，年轻的你又有什么理由放弃？现在所有的努力，都是在为你的"千里"积蓄力量。"
+    },
+    {
+      id: "r4",
+      title: "小松",
+      author: "杜荀鹤",
+      dynasty: "唐",
+      text: "自小刺头深草里，而今渐觉出蓬蒿。\n时人不识凌云木，直待凌云始道高。",
+      translation: "小松树小时候被埋没在深草里，现在才渐渐长得比蓬蒿高了。人们不认识这就是将来能高耸入云的大树，直到它真的冲入云霄了，才惊叹它的高大。",
+      reflection: "你现在的状态就像那棵小松——还在深草里，不被人看见，不被人认识。但你正在悄悄生长。等有一天你"出蓬蒿"了，那些曾经看轻你的人会明白，你从来就不是一棵普通的小草。别急，你只是在扎根。"
+    }
+  ],
+  // ======== 疲惫时 ========
+  tired: [
+    {
+      id: "t1",
+      title: "归园田居·其三",
+      author: "陶渊明",
+      dynasty: "东晋",
+      text: "种豆南山下，草盛豆苗稀。\n晨兴理荒秽，带月荷锄归。\n道狭草木长，夕露沾我衣。\n衣沾不足惜，但使愿无违。",
+      translation: "在南山下种豆子，野草长得比豆苗还茂盛。早起去清理荒草，直到月亮升起才扛着锄头回家。小路狭窄草木丛生，傍晚的露水打湿了我的衣裳。衣裳湿了不可惜，只要不违背我归隐田园的愿望就好。",
+      reflection: "陶渊明种的豆子长得并不好，草盛豆苗稀——但他依然"晨兴理荒秽，带月荷锄归"。累了一天，衣裳被露水打湿，他却说"衣沾不足惜"。做自己喜欢的事，再累也是甘愿的。"
+    },
+    {
+      id: "t2",
+      title: "酬乐天扬州初逢席上见赠（节选）",
+      author: "刘禹锡",
+      dynasty: "唐",
+      text: "巴山楚水凄凉地，二十三年弃置身。\n怀旧空吟闻笛赋，到乡翻似烂柯人。\n沉舟侧畔千帆过，病树前头万木春。",
+      translation: "在巴山楚水那样凄凉的地方，我被贬谪了二十三年。回到家乡，物是人非，就像那个看人下棋烂了斧柄的樵夫一样。但沉船的旁边有千帆驶过，枯树的前头是万木争春。",
+      reflection: "刘禹锡被贬二十三年，人生最好的年华都在荒凉之地度过。但他说"沉舟侧畔千帆过，病树前头万木春"——即使你觉得自己是一艘沉船、一棵病树，世界依然在向前运转，春天依然会到来。再累，也撑一撑，春天快到了。"
+    },
+    {
+      id: "t3",
+      title: "早发白帝城",
+      author: "李白",
+      dynasty: "唐",
+      text: "朝辞白帝彩云间，千里江陵一日还。\n两岸猿声啼不住，轻舟已过万重山。",
+      translation: "清晨告别了彩云间的白帝城，千里之外的江陵一天就回来了。两岸的猿声还在耳边不停啼叫，轻快的小船已经穿过了万重高山。",
+      reflection: "觉得累的时候想想李白——"轻舟已过万重山"。那些让你喘不过气来的事情，等你走过去了回头看，也不过是"两岸猿声"而已。轻舟终会过万山，你也一样。"
+    },
+    {
+      id: "t4",
+      title: "山中",
+      author: "王维",
+      dynasty: "唐",
+      text: "荆溪白石出，天寒红叶稀。\n山路元无雨，空翠湿人衣。",
+      translation: "荆溪水浅了，白色的石头露了出来；天冷了，红叶也变得稀疏。山路上本来没有下雨，但翠绿的山色却让人感觉衣服都被染湿了。",
+      reflection: "王维的诗有一种不费力的美。什么都不用想，就走在山路上，看白石、红叶、空翠。如果你觉得累了，试着像王维一样——找一个安静的时刻，只关注眼前最简单的事物。让山色"湿"你的衣，也"湿"你的心。"
+    }
+  ]
+};
+// 所有诗词的扁平列表（用于随机和每日推荐）
+const allPoems = Object.values(poems).flat();
+// 情绪分类的中文名
+const moodLabels = {
+  confused: "迷茫时",
+  anxious: "焦虑时",
+  lonely: "孤独时",
+  courage: "需勇气",
+  tired: "疲惫时"
+};
+const moodIcons = {
+  confused: "🌫",
+  anxious: "🌊",
+  lonely: "🌙",
+  courage: "🔥",
+  tired: "🍃"
+};
+
+// === State ===
+let currentMood = null;
+let currentPoem = null;
+let favorites = JSON.parse(localStorage.getItem("wenxuan_fav") || "[]");
+let journal = JSON.parse(localStorage.getItem("wenxuan_journal") || "[]");
+let currentView = "explore"; // explore | favorites | journal
+
+// === DOM refs ===
+const $ = (s) => document.querySelector(s);
+const $ = (s) => document.querySelectorAll(s);
+
+const heroQuote = $("#hero-quote");
+const heroSource = $("#hero-source");
+const poemCard = $("#poem-card");
+const poemDailyBadge = $("#poem-daily-badge");
+const poemTitle = $("#poem-title");
+const poemAuthor = $("#poem-author");
+const poemText = $("#poem-text");
+const poemTranslation = $("#poem-translation");
+const poemReflection = $("#poem-reflection");
+const favBtn = $("#fav-btn");
+const randomBtn = $("#random-btn");
+const moodNav = $("#mood-nav");
+const moodTags = $("#mood-tags");
+const favoritesSection = $("#favorites-section");
+const favoritesList = $("#favorites-list");
+const journalSection = $("#journal-section");
+const journalText = $("#journal-text");
+const journalEntries = $("#journal-entries");
+const journalSaveBtn = $("#journal-save-btn");
+
+// Sections
+const exploreSection = $("#explore-section");
+const favSection = $("#favorites-section");
+const jourSection = $("#journal-section");
+
+// Nav
+const navExplore = $("#nav-explore");
+const navFav = $("#nav-fav");
+const navJournal = $("#nav-journal");
+
+// === Utility ===
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function getTodaySeed() {
+  const d = new Date();
+  return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+}
+
+function getDailyPoem() {
+  const seed = getTodaySeed();
+  return allPoems[seed % allPoems.length];
+}
+
+// === Render Poem ===
+function renderPoem(poem, isDaily = false) {
+  currentPoem = poem;
+  if (isDaily) {
+    poemDailyBadge.textContent = "\u2606 \u4eca\u65e5\u63a8\u8350";
+    poemDailyBadge.style.display = "inline-block";
+  } else {
+    poemDailyBadge.style.display = "none";
+  }
+  poemTitle.textContent = poem.title;
+  poemAuthor.textContent = `\u2014\u2014 ${poem.dynasty}\u00b7${poem.author}`;
+  poemText.textContent = poem.text;
+
+  const transLabel = poemTranslation.querySelector(".poem-translation-label");
+  const transBody = poemTranslation.querySelector(".poem-translation-body");
+  transBody.textContent = poem.translation;
+  poemTranslation.style.display = "block";
+
+  poemReflection.textContent = poem.reflection;
+
+  updateFavBtn();
+
+  // Reset animation
+  poemCard.classList.remove("fade-in");
+  void poemCard.offsetWidth;
+  poemCard.classList.add("fade-in");
+}
+
+function updateFavBtn() {
+  if (!currentPoem) return;
+  const isFav = favorites.some((f) => f.id === currentPoem.id);
+  favBtn.classList.toggle("favorited", isFav);
+  favBtn.querySelector(".icon-text").textContent = isFav ? "\u2665" : "\u2661";
+}
+
+function toggleFavorite() {
+  if (!currentPoem) return;
+  const idx = favorites.findIndex((f) => f.id === currentPoem.id);
+  if (idx >= 0) {
+    favorites.splice(idx, 1);
+  } else {
+    favorites.push({ id: currentPoem.id, title: currentPoem.title, author: currentPoem.author, mood: currentMood });
+  }
+  localStorage.setItem("wenxuan_fav", JSON.stringify(favorites));
+  updateFavBtn();
+  if (currentView === "favorites") renderFavorites();
+}
+
+// === Random / Mood ===
+function showRandom() {
+  currentMood = null;
+  highlightMood(null);
+  const poem = allPoems[Math.floor(Math.random() * allPoems.length)];
+  renderPoem(poem, false);
+}
+
+function showByMood(moodKey) {
+  currentMood = moodKey;
+  highlightMood(moodKey);
+  const list = poems[moodKey];
+  if (!list || list.length === 0) return;
+  const poem = list[Math.floor(Math.random() * list.length)];
+  renderPoem(poem, false);
+}
+
+function showDaily() {
+  currentMood = null;
+  highlightMood(null);
+  const poem = getDailyPoem();
+  renderPoem(poem, true);
+}
+
+function highlightMood(moodKey) {
+  moodTags.querySelectorAll(".mood-tag").forEach((el) => {
+    el.classList.toggle("active", el.dataset.mood === moodKey);
+  });
+  moodNav.querySelectorAll(".mood-nav-item").forEach((el) => {
+    el.classList.toggle("active", el.dataset.mood === moodKey);
+  });
+}
+
+// === Favorites UI ===
+function renderFavorites() {
+  if (favorites.length === 0) {
+    favoritesList.innerHTML = `<div class="favorites-empty">
+      \u8fd8\u6ca1\u6709\u6536\u85cf\u7684\u8bd7\u8bcd\u3002<br>
+      \u70b9\u51fb\u8bd7\u8bcd\u5361\u7247\u4e0a\u7684 \u2661 \u6536\u85cf\u4f60\u559c\u6b22\u7684\u7b97\u7247\u5427\u3002
+    </div>`;
+    return;
+  }
+  favoritesList.innerHTML = favorites.map((f) => {
+    // Find the poem data
+    const p = allPoems.find((x) => x.id === f.id);
+    if (!p) return "";
+    return `<div class="fav-item" data-id="${f.id}">
+      <div>
+        <div class="fav-item-title">${p.title}</div>
+        <div class="fav-item-author">${p.dynasty}\u00b7${p.author}</div>
+      </div>
+      <button class="fav-item-remove" data-id="${f.id}" title="\u79fb\u9664\u6536\u85cf">&times;</button>
+    </div>`;
+  }).join("");
+
+  // Click to view
+  favoritesList.querySelectorAll(".fav-item").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      if (e.target.closest(".fav-item-remove")) return;
+      const id = el.dataset.id;
+      const p = allPoems.find((x) => x.id === id);
+      if (p) {
+        switchView("explore");
+        renderPoem(p, false);
+      }
+    });
+  });
+
+  // Remove
+  favoritesList.querySelectorAll(".fav-item-remove").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const id = btn.dataset.id;
+      favorites = favorites.filter((f) => f.id !== id);
+      localStorage.setItem("wenxuan_fav", JSON.stringify(favorites));
+      renderFavorites();
+      updateFavBtn();
+    });
+  });
+}
+
+// === Journal UI ===
+function renderJournal() {
+  if (journal.length === 0) {
+    journalEntries.innerHTML = `<div class="favorites-empty">
+      \u8fd8\u6ca1\u6709\u5199\u8fc7\u611f\u609f\u3002<br>
+      \u8bfb\u5b8c\u4e00\u9996\u8bd7\u540e\uff0c\u628a\u4f60\u7684\u5fc3\u60c5\u5199\u4e0b\u6765\u5427\u3002
+    </div>`;
+    return;
+  }
+  journalEntries.innerHTML = [...journal].reverse().map((entry, i) => {
+    const realIdx = journal.length - 1 - i;
+    return `<div class="journal-entry">
+      <div class="journal-entry-date">${entry.date}</div>
+      <div>${entry.text.replace(/\n/g, "<br>")}</div>
+      <button class="journal-entry-del" data-idx="${realIdx}">&times;</button>
+    </div>`;
+  }).join("");
+
+  journalEntries.querySelectorAll(".journal-entry-del").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const idx = parseInt(btn.dataset.idx);
+      journal.splice(idx, 1);
+      localStorage.setItem("wenxuan_journal", JSON.stringify(journal));
+      renderJournal();
+    });
+  });
+}
+
+// === View Switching ===
+function switchView(view) {
+  currentView = view;
+  exploreSection.classList.toggle("active", view === "explore");
+  favSection.classList.toggle("active", view === "favorites");
+  jourSection.classList.toggle("active", view === "journal");
+  navExplore.classList.toggle("active", view === "explore");
+  navFav.classList.toggle("active", view === "favorites");
+  navJournal.classList.toggle("active", view === "journal");
+
+  if (view === "favorites") renderFavorites();
+  if (view === "journal") renderJournal();
+}
+
+// === Mood Navigator (bottom) ===
+function buildMoodNav() {
+  let html = "";
+  for (const [key, label] of Object.entries(moodLabels)) {
+    const icon = moodIcons[key] || "";
+    html += `<button class="mood-nav-item" data-mood="${key}">${icon} ${label}</button>`;
+  }
+  moodNav.innerHTML = html;
+  moodNav.querySelectorAll(".mood-nav-item").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      switchView("explore");
+      showByMood(btn.dataset.mood);
+    });
+  });
+}
+
+// === Hero Mood Tags ===
+function buildHeroTags() {
+  let html = "";
+  for (const [key, label] of Object.entries(moodLabels)) {
+    const icon = moodIcons[key] || "";
+    html += `<button class="mood-tag" data-mood="${key}">${icon} ${label}</button>`;
+  }
+  moodTags.innerHTML = html;
+  moodTags.querySelectorAll(".mood-tag").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      switchView("explore");
+      showByMood(btn.dataset.mood);
+    });
+  });
+}
+
+// === Hero Random Daily Line ===
+function getRandomHeroLine() {
+  const lines = [
+    "\u6587\u5b66\u662f\u6700\u5b89\u9759\u7684\u53cb\u4eba\uff0c\u4e0d\u66fe\u8bf4\u8bdd\uff0c\u5374\u61c2\u4f60\u4e00\u5207\u3002",
+    "\u5fd9\u788c\u7684\u65e5\u5b50\u91cc\uff0c\u8bb0\u5f97\u7ed9\u81ea\u5df1\u7559\u4e00\u53e5\u8bd7\u7684\u65f6\u95f4\u3002",
+    "\u4f60\u4e0d\u662f\u5b64\u72ec\uff0c\u4f60\u662f\u8fd8\u6ca1\u9047\u89c1\u90a3\u9996\u4e0e\u4f60\u5fc3\u6709\u7075\u6089\u7684\u8bd7\u3002",
+    "\u8bd7\u8bcd\u4e0d\u89e3\u7b54\u95ee\u9898\uff0c\u4f46\u5b83\u4f1a\u966a\u4f60\u5ea6\u8fc7\u95ee\u9898\u3002",
+    "\u8d8a\u662f\u7cdf\u7cd5\u7684\u65e5\u5b50\uff0c\u8d8a\u8981\u5b66\u4f1a\u70b9\u4eae\u4e00\u53e5\u8bd7\u3002",
+    "\u6bcf\u4e2a\u5fc3\u4e8b\u90fd\u80fd\u5728\u53e4\u8bd7\u91cc\u627e\u5230\u56de\u97f3\uff0c\u4f60\u53ea\u662f\u8fd8\u6ca1\u53d1\u73b0\u3002",
+    "\u4e16\u754c\u5f88\u5435\uff0c\u4f46\u4f60\u53ef\u4ee5\u5f88\u5b89\u9759\u3002\u5c31\u50cf\u53e4\u4eba\u90a3\u6837\u3002",
+  ];
+  return lines[Math.floor(Math.random() * lines.length)];
+}
+
+// === Init ===
+function init() {
+  buildMoodNav();
+  buildHeroTags();
+
+  // Hero random line
+  heroQuote.textContent = `\u201c${getRandomHeroLine()}\u201d`;
+  heroSource.textContent = "\u2014\u2014 \u58a8\u5c7e \u00b7 \u6587\u5b66\u7597\u6108\u7a7a\u95f4";
+
+  // Daily poem on load
+  showDaily();
+
+  // Nav
+  navExplore.addEventListener("click", () => switchView("explore"));
+  navFav.addEventListener("click", () => switchView("favorites"));
+  navJournal.addEventListener("click", () => switchView("journal"));
+
+  // Fav btn
+  favBtn.addEventListener("click", toggleFavorite);
+
+  // Random btn
+  randomBtn.addEventListener("click", () => {
+    switchView("explore");
+    showRandom();
+  });
+
+  // Journal save
+  journalSaveBtn.addEventListener("click", () => {
+    const text = journalText.value.trim();
+    if (!text) return;
+    const now = new Date();
+    const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")} ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+    journal.push({ date: dateStr, text });
+    localStorage.setItem("wenxuan_journal", JSON.stringify(journal));
+    journalText.value = "";
+    renderJournal();
+  });
+
+  // Keyboard shortcuts
+  document.addEventListener("keydown", (e) => {
+    if (e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT") return;
+    if (e.key === "r" || e.key === "R") {
+      switchView("explore");
+      showRandom();
+    }
+    if (e.key === "f" || e.key === "F") {
+      toggleFavorite();
+    }
+    if (e.key === "d" || e.key === "D") {
+      switchView("explore");
+      showDaily();
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", init);
+
+</script>
 </body>
-</html>
+
+
+
